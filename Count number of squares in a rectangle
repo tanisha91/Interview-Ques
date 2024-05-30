@@ -1,0 +1,18 @@
+public class Main {
+	public static void main(String[] args) {
+		int m = 4;
+		int n = 3;
+		System.out.println(countSquares(m, n));
+	}
+
+	// Function to count the number of squares in an m x n grid
+	public static int countSquares(int m, int n) {
+		int count = 0;
+		for (int i = 1; i <= Math.min(m, n); i++) {
+			// Calculate the number of squares with
+			// side length 'i' that fit in the grid
+			count += (m - i + 1) * (n - i + 1);
+		}
+		return count;
+	}
+}
