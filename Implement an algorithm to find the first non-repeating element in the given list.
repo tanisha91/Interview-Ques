@@ -1,0 +1,68 @@
+import java.util.HashMap;
+
+public class FirstNonRepeatingElement {
+
+    public static Integer findFirstNonRepeating(int[] arr) {
+        HashMap<Integer, Integer> frequencyMap = new HashMap<>();
+
+        // First pass: count the frequency of each element
+        for (int element : arr) {
+            frequencyMap.put(element, frequencyMap.getOrDefault(element, 0) + 1);
+        }
+
+        // Second pass: find the first element with frequency 1
+        for (int element : arr) {
+            if (frequencyMap.get(element) == 1) {
+                return element;
+            }
+        }
+
+        // Return null if there is no non-repeating element
+        return null;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 4, 2, 3, 5, 4, 6};
+        Integer firstNonRepeating = findFirstNonRepeating(arr);
+        
+        if (firstNonRepeating != null) {
+            System.out.println("First non-repeating element: " + firstNonRepeating);
+        } else {
+            System.out.println("No non-repeating element found.");
+        }
+    }
+}
+
+                                                             OR
+
+import java.util.Arrays;
+
+public class FirstNonRepeatingElement {
+
+    public static Integer findFirstNonRepeating(int[] arr) {
+        // Sort the array
+        Arrays.sort(arr);
+
+        // Traverse the sorted array to find the first non-repeating element
+        for (int i = 0; i < arr.length; i++) {
+            // Check if the current element is different from the previous and the next one
+            if ((i == 0 || arr[i] != arr[i - 1]) && (i == arr.length - 1 || arr[i] != arr[i + 1])) {
+                return arr[i];
+            }
+        }
+
+        // Return null if there is no non-repeating element
+        return null;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 4, 2, 3, 5, 4, 6};
+        Integer firstNonRepeating = findFirstNonRepeating(arr);
+        
+        if (firstNonRepeating != null) {
+            System.out.println("First non-repeating element: " + firstNonRepeating);
+        } else {
+            System.out.println("No non-repeating element found.");
+        }
+    }
+}
