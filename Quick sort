@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {5,3,2,4,7,6,8};
+quick(arr,0,arr.length-1);
+        System.out.print(Arrays.toString(arr));
+    }
+   
+
+ static int part(int a[],int low,int high){
+      int pivot=a[high];
+      int i=low-1;
+      for(int j=low;j<high;j++)
+      {
+          if(a[j]<=pivot){
+              i++;
+              //swap
+              int temp=a[i];
+              a[i]=a[j];
+              a[j]=temp;
+          }
+      } 
+      int temp=a[i+1];
+        a[i+1]=a[high];
+        a[high]=temp;
+      return i+1;
+  }
+   static void quick(int a[],int low,int high){
+       if(low<high){
+        int idx=part(a,low,high);
+        quick(a,low,idx-1);
+        quick(a,idx+1,high);
+    }
+   }
+    
+    }
+
