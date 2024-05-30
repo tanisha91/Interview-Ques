@@ -1,0 +1,43 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+    Node(int data){
+        this.data=data;
+        left=right=null;
+    }  
+}
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {5,3,2,4,7,6,8};
+        Node root=null;
+        for(int i=0;i<7;i++){
+            root=create(root,arr[i]);
+        }
+        inorder(root);
+    }
+   static Node  create(Node root,int data){
+        if(root==null){
+            root= new Node(data);
+            return root;
+        }
+        else if(data > root.data){
+            root.right=create(root.right,data);
+        } 
+        else if(data<root.data){
+            root.left=create(root.left,data);
+        }
+          return root;
+        }
+
+   static void inorder(Node rot){
+        if(rot==null){
+            return ;
+        }
+        inorder(rot.left);
+        System.out.print(rot.data+" ");
+        inorder(rot.right);
+    }
+    
+    }
+
